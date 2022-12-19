@@ -9,7 +9,9 @@ Follow instructions on: https://github.com/google-research/kubric/tree/main/chal
 
 `pip install -r requirements.txt`
 
-`python script.py --dir_path 'path_where_dataset_is_saved' --save_path "path_where_converted_data_needs_to_be_saved" --split "train"`
+`python script.py --dir_path "path_where_dataset_is_saved" --save_path "path_where_converted_data_needs_to_be_saved" --split "train"`
+
+Accepted split values: `train` and `validation`
 
 The images are saved in .png and the optical flow maps are saved in .flo format.
 ___
