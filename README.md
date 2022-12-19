@@ -1,24 +1,24 @@
-# Kubric optical flow dataset tfrecord conversion
+# Convert Kubric Optical flow Dataset 
 
 A script to convert .tfrecords of the Kubric Optical Flow Dataset to MPI Sintel Directory Structure. 
 ___
 
 ### Steps
 
-Follow instructions on: https://github.com/google-research/kubric/tree/main/challenges/optical_flow to download the dataset.
+- Follow instructions on: https://github.com/google-research/kubric/tree/main/challenges/optical_flow to download the dataset.
 
-`pip install -r requirements.txt`
+- `pip install -r requirements.txt`
 
-`python script.py --dir_path "path_where_dataset_is_saved" --save_path "path_where_converted_data_needs_to_be_saved" --split "train"`
+- `python script.py --dir_path "path_where_dataset_is_saved" --save_path "path_where_converted_data_needs_to_be_saved" --split "train"`
 
 Accepted split values: `train` and `validation`
 
-The images are saved in .png and the optical flow maps are saved in .flo format.
+The images are saved in `.png` and the optical flow maps are saved in `.flo` format.
 ___
 
 ### Directory Structure
 
-`save_path="kubricflow"`
+If `save_path`is "kubricflow"`
 
     kubricflow
     ├── training
