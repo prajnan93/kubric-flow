@@ -1,9 +1,11 @@
 """
-    This script converts .tfrecords of the Kubric Optical Flow Dataset  to MPI Sintel Directory Structure.
-    The data can be downloaded from: https://github.com/google-research/kubric/tree/main/challenges/optical_flow
-    
+    This script converts the .tfrecords of the Kubric Optical Flow 'movi-f' Dataset  to MPI Sintel Directory Structure.
+    Follow instructions on: https://github.com/google-research/kubric/tree/main/challenges/optical_flow to download the dataset
+    or use gsutil to download the data: gsutil -m cp -r “gs://kubric-public/tfds/movi_f”
+
+    The images are saved in .png and the optical flow maps are saved in .flo format.
+
     This script makes it possible to write a PyTorch Dataloader for Kubric 'movi-f' split optical flow data. 
-    
     A PyTorch Dataloader is also provided in the EzFlow Optical Flow Library: https://github.com/neu-vi/ezflow   
 """
 
@@ -150,14 +152,17 @@ if __name__ == "__main__":
 
     ds_type = "movi_f"
 
-    assert args.split.lower() in ['train','validation'], "Invalid split values. Accepted split values: train, validation"
+    args.split = args.split.lower()
+    assert args.split in ['train','validation'], "Invalid split values. Accepted split values: train, validation"
+
+    args.save_path = os.path.join(args.save_path, "training") if args.split.lower == 'train' else os.path.join(args.save_path, "validation") 
 
     # Tensorflow prioritizes loading on GPU by default
     # Disable loading on all GPUS
     tf.config.set_visible_devices([], 'GPU')
 
     try:
-        ds = tfds.load(ds_type, data_dir=args.dir_path, split=args.split.lower(), shuffle_files=False)
+        ds = tfds.load(ds_type, data_dir=args.dir_path, split=args.split, shuffle_files=False)
     except:
         print(f"Kubric Dataset {ds_type} not found in location {args.dir_path}")
         sys.exit()
@@ -165,4 +170,4 @@ if __name__ == "__main__":
     for index, sample in enumerate(ds):
         save_sample(index+1, sample, root_path=args.save_path, ext=".png")
 
-    print(f"Finished converting {args.split.lower()}")
+    print(f"Finished converting {args.split.lower()}. Location:{args.save_path}")
