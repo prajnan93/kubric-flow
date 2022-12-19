@@ -1,6 +1,6 @@
 # Convert Kubric Optical flow Dataset 
 
-A script to convert .tfrecords of the Kubric Optical Flow Dataset to MPI Sintel Directory Structure. This directory structure makes it possible to write a `PyTorch Dataloader` for Kubric 'movi-f' split optical flow data. 
+A script to convert .tfrecords of the Kubric Optical Flow Dataset to MPI Sintel Directory Structure. This directory structure makes it possible to write a `PyTorch Dataloader` for Kubric 'movi-f' forward and backward optical flow maps. 
 
 A PyTorch Dataloader is also provided in the EzFlow Optical Flow Library: https://github.com/neu-vi/ezflow   
 ___
