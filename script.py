@@ -5,7 +5,7 @@
 
     The images are saved in .png and the optical flow maps are saved in .flo format.
 
-    This script makes it possible to write a PyTorch Dataloader for Kubric 'movi-f' split optical flow data. 
+    This directory structure makes it possible to write a PyTorch Dataloader for Kubric 'movi-f' split optical flow data. 
     A PyTorch Dataloader is also provided in the EzFlow Optical Flow Library: https://github.com/neu-vi/ezflow   
 """
 
